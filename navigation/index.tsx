@@ -2,25 +2,23 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { RootStackParamList, RootTabParamList } from '../types'
-import { Octicons, Ionicons, Feather, AntDesign } from '@expo/vector-icons' 
+import { Feather } from '@expo/vector-icons' 
 import Colors from '../constants/Colors'
-import HomeScreen from '../screens/Home/HomeScreen'
-import VesselScreen from '../screens/VesselDetails/VesselScreen'
-import ProfileScreen from '../screens/Profile/ProfileScreen'
-import SettingsScreen from '../screens/Settings/SettingsScreen'
+import Empty from '../src/screens/Empty'
+import Expenses from '../src/screens/Expenses'
+import { StatusBar } from 'react-native'
+import Home from '../src/screens/Home'
 
 export default function Navigation () {
   return (
-    <NavigationContainer>
-      <RootNavigator />
-    </NavigationContainer>
+    <>
+      <StatusBar backgroundColor={Colors.activeNav} />
+      <NavigationContainer>
+        <RootNavigator />
+      </NavigationContainer>
+    </>
   )
 }
-
-/**
- * A root stack navigator is often used for displaying modals on top of all other content.
- * https://reactnavigation.org/docs/modal
- */
 
 const Stack = createNativeStackNavigator<RootStackParamList>()
 
@@ -32,59 +30,61 @@ const RootNavigator = (() => {
   )
 })
 
-/**
- * A bottom tab navigator displays tab buttons on the bottom of the display to switch screens.
- * https://reactnavigation.org/docs/bottom-tab-navigator
- */
 const BottomTab = createBottomTabNavigator<RootTabParamList>()
 
 function BottomTabNavigator () {
   return (
     <BottomTab.Navigator
-      initialRouteName="homeTab"
+      initialRouteName="home"
       screenOptions={{
-        tabBarShowLabel: false,
-        tabBarItemStyle: {
-          height: 72,
+        tabBarShowLabel: true,
+        tabBarLabelStyle: {
+          color: Colors.text
         },
         headerShown: false
       }}
     >
-
       <BottomTab.Screen
-        name="homeTab"
-        component={HomeScreen}
+        name="home"
+        component={Home}
         options={{
           title: 'Home',
-          tabBarIcon: ({ focused }) => <Octicons name="home" color={focused ? Colors.primary : Colors.primaryOpacity3} size={23} />
+          tabBarIcon: ({ focused }) => <Feather name="home" color={focused ? Colors.activeNav : Colors.text} size={23} />
         }}
       />
       <BottomTab.Screen
-        name="vesselTab"
-        component={VesselScreen}
+        name="expenses"
+        component={Expenses}
         options={{
-          title: 'Vessel',
-          tabBarIcon: ({ focused }) => <Feather name="anchor" color={focused ? Colors.primary : Colors.primaryOpacity3} size={23} />
+          title: 'Expenses',
+          tabBarIcon: ({ focused }) => <Feather name="pie-chart" color={focused ? Colors.activeNav : Colors.text} size={23} />
+        }}
+      />
+      <BottomTab.Screen
+        name="portfolio"
+        component={Empty}
+        options={{
+          title: 'Portfolio',
+          tabBarIcon: ({ focused }) => <Feather name="dollar-sign" color={focused ? Colors.activeNav : Colors.text} size={23} />
           
         }}
       />
       <BottomTab.Screen
-        name="profileTab"
-        component={ProfileScreen}
+        name="bank_accounts"
+        component={Empty}
         options={{
-          title: 'Profile',
-          tabBarIcon: ({ focused }) => <AntDesign name="idcard" color={focused ? Colors.primary : Colors.primaryOpacity3} size={23} />
+          title: 'Bank Accounts',
+          tabBarIcon: ({ focused }) => <Feather name="list" color={focused ? Colors.activeNav : Colors.text} size={23} />
         }}
       />
       <BottomTab.Screen
-        name="settingsTab"
-        component={SettingsScreen}
+        name="more"
+        component={Empty}
         options={{
-          title: 'Settings',
-          tabBarIcon: ({ focused }) => <Ionicons name="settings-outline" color={focused ? Colors.primary : Colors.primaryOpacity3} size={23} />
+          title: 'More',
+          tabBarIcon: ({ focused }) => <Feather name="more-horizontal" color={focused ? Colors.activeNav : Colors.text} size={23} />
         }}
       />
-
     </BottomTab.Navigator>
   )
 }
