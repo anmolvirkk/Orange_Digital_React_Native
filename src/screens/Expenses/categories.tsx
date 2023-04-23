@@ -8,7 +8,7 @@ import Card from "./card";
 const ViewAll = () => {
   const navigator = useNavigation()
   const onPress = () => {
-    navigator.navigate('AllCategories')
+    // navigator.navigate('AllCategories')
   }
   return (
     <TouchableOpacity style={{...styles.card, padding: 12, borderBottomWidth: 0}} onPress={onPress}>
