@@ -1,22 +1,14 @@
 import React from "react";
 import { View, StyleSheet } from "react-native";
-import Card from "./Card";
 import cashData from "../../../constants/cashData";
 import Heading from "../common/Heading";
+import CardList from "./CardList";
 
 const CashFlow = () => {
   return (
     <View style={styles.container}>
       <Heading title="Cash" />
-      {cashData.map((card, i) => (
-        <Card
-          key={i}
-          name={card.name}
-          type={card.type}
-          icon={card.icon}
-          amount={card.amount}
-        />
-      ))}
+      <CardList cashData={cashData} />
     </View>
   );
 };
