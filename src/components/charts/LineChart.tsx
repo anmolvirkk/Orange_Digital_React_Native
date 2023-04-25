@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, Dimensions } from "react-native";
 import { VictoryArea, VictoryAxis, VictoryChart } from "victory-native";
 import expenseData from "../../../constants/expenseData";
 import addCommas from "../../utility/addCommas";
@@ -74,10 +74,10 @@ const LineChart : React.FC = () => {
 
   return (
     <View style={{ backgroundColor: "#fff", marginTop: 12, marginLeft: 12, marginRight: 12 }}>
-      <View style={{ alignItems: "center" }}>
+      <View style={{ alignItems: "center", justifyContent: 'center' }}>
         <Text style={{fontSize: 30, marginTop: 6}}>${addCommas(totalAmount.toString())}</Text>
         <View style={{marginTop: -30}}>
-          <VictoryChart>
+          <VictoryChart width={Dimensions.get('window').width + 24} style={{parent: {marginLeft: -24}}}>
             <VictoryAxis
               dependentAxis
               orientation="right"
