@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { VictoryArea, VictoryAxis, VictoryChart } from "victory-native";
 import expenseData from "../../../constants/expenseData";
-import Colors from "../../../constants/Colors";
 import addCommas from "../../utility/addCommas";
+import colors from "../../../constants/colors";
 
-const LineChart = () => {
+const LineChart : React.FC = () => {
 
   const [data, setData] = useState(expenseData.slice(-365));
   const [currentTimeframe, setCurrentTimeframe] = useState('1Y')
@@ -13,7 +13,7 @@ const LineChart = () => {
     return acc + curr.y
   }, 0))
 
-  const handleDataChange = (timeFrame) => {
+  const handleDataChange = (timeFrame: string) => {
     let newData = [];
     switch (timeFrame) {
       case "1D":
@@ -59,11 +59,11 @@ const LineChart = () => {
     setCurrentTimeframe(timeFrame)
   };
 
-  const TimeFrameButton = ({timeframe}) => {
+  const TimeFrameButton = ({timeframe} : {timeframe: string}) => {
     return (
       <View
           onTouchStart={() => handleDataChange(timeframe)}
-          style={{backgroundColor: currentTimeframe === timeframe ? Colors.grey : "transparent", ...styles.timeframe}}
+          style={{backgroundColor: currentTimeframe === timeframe ? colors.grey : "transparent", ...styles.timeframe}}
         >
         <Text style={{ color: currentTimeframe === timeframe ? "#fff" : "#000", fontWeight: '600'}}>
           {timeframe}
@@ -83,12 +83,12 @@ const LineChart = () => {
               orientation="right"
               crossAxis
               tickFormat={(t) => `${t/1000}k`}
-              style={{ axis: { stroke: "none" }, tickLabels: {fill: Colors.grey} }}
+              style={{ axis: { stroke: "none" }, tickLabels: {fill: colors.grey} }}
             />
             <VictoryArea
               data={data}
               interpolation="cardinal"
-              style={{ data: { fill: Colors.areaChart, fillOpacity: "0.25", strokeWidth: 2} }}
+              style={{ data: { fill: colors.areaChart, fillOpacity: "0.25", strokeWidth: 2} }}
             />
           </VictoryChart>
         </View>

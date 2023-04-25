@@ -1,8 +1,9 @@
 import React from "react";
 import { View, Text, Image, TouchableOpacity, StyleSheet } from "react-native";
 import { Feather } from '@expo/vector-icons' 
+import { CardType } from "../../../types";
 
-const Card = ({ title, text, image }) => {
+const Card : React.FC<CardType> = ({ title, text, image }) => {
   return (
     <TouchableOpacity style={styles.card}>
       <Image source={image} style={styles.image} />

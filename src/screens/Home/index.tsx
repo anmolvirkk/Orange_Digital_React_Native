@@ -3,9 +3,10 @@ import { ScrollView } from 'react-native';
 import LineChart from './linechart';
 import Cash from './cash';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import Colors from '../../../constants/Colors';
+import { HomeStackParamList } from '../../../types';
+import colors from '../../../constants/colors';
 
-const HomeScreen = () => {
+const HomeScreen: React.FC = () => {
   return (
     <ScrollView>
       <LineChart />
@@ -14,14 +15,14 @@ const HomeScreen = () => {
   )
 }
 
-const Home = () => {
-  const Stack = createNativeStackNavigator()
+const Home: React.FC = () => {
+  const Stack = createNativeStackNavigator<HomeStackParamList>()
   return (
     <Stack.Navigator>
       <Stack.Screen name='Home' component={HomeScreen} options={{
         headerTitle: 'Home',
         headerStyle: {
-          backgroundColor: Colors.activeNav
+          backgroundColor: colors.activeNav
         },
         headerTitleStyle: {
           color: 'white'

@@ -1,6 +1,5 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
-import categories from "../../../constants/categories";
 import Card from "./card";
 import cashData from "../../../constants/cashData";
 

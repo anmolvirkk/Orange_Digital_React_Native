@@ -4,9 +4,10 @@ import PieChart from './piechart';
 import Categories from './categories';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import AllCategories from '../AllCategories';
-import Colors from '../../../constants/Colors';
+import { ExpensesStackParamList } from '../../../types';
+import colors from '../../../constants/colors';
 
-const ExpensesPage = () => {
+const ExpensesPage : React.FC = () => {
   return (
     <ScrollView>
       <PieChart />
@@ -15,15 +16,15 @@ const ExpensesPage = () => {
   )
 }
 
-const Expenses = () => {
-  const Stack = createNativeStackNavigator()
+const Expenses : React.FC = () => {
+  const Stack = createNativeStackNavigator<ExpensesStackParamList>()
   return (
     <Stack.Navigator screenOptions={{animation: 'slide_from_right'}}>
       <Stack.Screen name="Root" component={ExpensesPage} options={{ 
         headerShown: true, 
         headerTitle: 'Expenses',
         headerStyle: {
-          backgroundColor: Colors.activeNav
+          backgroundColor: colors.activeNav
         },
         headerTitleStyle: {
           color: 'white'
@@ -34,7 +35,7 @@ const Expenses = () => {
         headerShown: true, 
         headerTitle: 'Expenses',
         headerStyle: {
-          backgroundColor: Colors.activeNav
+          backgroundColor: colors.activeNav
         },
         headerTitleStyle: {
           color: 'white'

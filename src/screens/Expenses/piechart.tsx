@@ -1,25 +1,27 @@
 import React from "react";
 import { View } from "react-native";
 import { VictoryPie, VictoryLegend } from "victory-native";
+import { PieChartDataType } from "../../../types";
 
-const PieChart = () => {
-  const data = [
-    { x: "Rent", y: 25 },
-    { x: "Restaurants", y: 20 },
-    { x: "Drinks", y: 30 },
-    { x: "Uber", y: 10 },
-    { x: "Groceries", y: 15 }
-  ];
+const data: PieChartDataType[] = [
+  { x: "Rent", y: 25 },
+  { x: "Restaurants", y: 20 },
+  { x: "Drinks", y: 30 },
+  { x: "Uber", y: 10 },
+  { x: "Groceries", y: 15 }
+];
+
+const PieChart : React.FC = () => {
   const colorScale = ["#FF8E9B", "#219FF6", "#9ED764", "#FFD38C", "#FF8711"]
   return (
-    <View style={{ backgroundColor: '#fff', marginTop: 12 }}>
-      <View style={{ alignItems: "center", marginTop: -40 }}>
+    <View style={{ backgroundColor: '#fff', marginTop: 12, alignItems: 'center', justifyContent: 'center' }}>
+      <View style={{ alignItems: "center", marginTop: -40, justifyContent: 'center' }}>
         <VictoryPie
           data={data}
           colorScale={colorScale}
           innerRadius={70}
           labelRadius={100}
-          labels={({ datum }) => `${datum.y}%\n${datum.x}`}
+          labels={({ datum } : {datum: PieChartDataType}) => `${datum.y}%\n${datum.x}`}
           style={{ labels: { fontSize: 14, fill: '#ffffff' } }}
         />
         <View

@@ -1,8 +1,9 @@
 import React from "react";
 import { View, Text, Image, TouchableOpacity, StyleSheet } from "react-native";
 import addCommas from "../../utility/addCommas";
+import { HomeCardType } from "../../../types";
 
-const Card = ({ name, type, icon, amount }) => {
+const Card: React.FC<HomeCardType> = ({ name, type, icon, amount }) => {
   return (
     <TouchableOpacity style={styles.card}>
       <Image source={icon} style={styles.image} />
@@ -48,4 +49,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default Card
+export default Card;

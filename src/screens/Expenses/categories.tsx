@@ -4,9 +4,11 @@ import { Feather } from '@expo/vector-icons'
 import { useNavigation } from "@react-navigation/native";
 import categories from "../../../constants/categories";
 import Card from "./card";
+import { ExpensesStackParamList } from "../../../types";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 
-const ViewAll = () => {
-  const navigator = useNavigation()
+const ViewAll : React.FC = () => {
+  const navigator = useNavigation<NativeStackNavigationProp<ExpensesStackParamList>>()
   const onPress = () => {
     navigator.navigate('AllCategories')
   }
@@ -20,7 +22,7 @@ const ViewAll = () => {
   )
 }
 
-const Categories = () => {
+const Categories : React.FC = () => {
   return (
     <View style={styles.container}>
       <View>

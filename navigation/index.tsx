@@ -3,16 +3,16 @@ import { NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { RootStackParamList, RootTabParamList } from '../types'
 import { Feather } from '@expo/vector-icons' 
-import Colors from '../constants/Colors'
 import Empty from '../src/screens/Empty'
 import Expenses from '../src/screens/Expenses'
 import { StatusBar } from 'react-native'
 import Home from '../src/screens/Home'
+import colors from '../constants/colors'
 
 export default function Navigation () {
   return (
     <>
-      <StatusBar backgroundColor={Colors.activeNav} />
+      <StatusBar backgroundColor={colors.activeNav} />
       <NavigationContainer>
         <RootNavigator />
       </NavigationContainer>
@@ -22,7 +22,7 @@ export default function Navigation () {
 
 const Stack = createNativeStackNavigator<RootStackParamList>()
 
-const RootNavigator = (() => {
+const RootNavigator : React.FC = (() => {
   return (
     <Stack.Navigator>
       <Stack.Screen name="Root" component={BottomTabNavigator} options={{ headerShown: false }} />
@@ -32,14 +32,14 @@ const RootNavigator = (() => {
 
 const BottomTab = createBottomTabNavigator<RootTabParamList>()
 
-function BottomTabNavigator () {
+const BottomTabNavigator : React.FC = () => {
   return (
     <BottomTab.Navigator
       initialRouteName="home"
       screenOptions={{
         tabBarShowLabel: true,
         tabBarLabelStyle: {
-          color: Colors.text
+          color: colors.text
         },
         headerShown: false
       }}
@@ -49,7 +49,7 @@ function BottomTabNavigator () {
         component={Home}
         options={{
           title: 'Home',
-          tabBarIcon: ({ focused }) => <Feather name="home" color={focused ? Colors.activeNav : Colors.text} size={23} />
+          tabBarIcon: ({ focused }) => <Feather name="home" color={focused ? colors.activeNav : colors.text} size={23} />
         }}
       />
       <BottomTab.Screen
@@ -57,7 +57,7 @@ function BottomTabNavigator () {
         component={Expenses}
         options={{
           title: 'Expenses',
-          tabBarIcon: ({ focused }) => <Feather name="pie-chart" color={focused ? Colors.activeNav : Colors.text} size={23} />
+          tabBarIcon: ({ focused }) => <Feather name="pie-chart" color={focused ? colors.activeNav : colors.text} size={23} />
         }}
       />
       <BottomTab.Screen
@@ -65,7 +65,7 @@ function BottomTabNavigator () {
         component={Empty}
         options={{
           title: 'Portfolio',
-          tabBarIcon: ({ focused }) => <Feather name="dollar-sign" color={focused ? Colors.activeNav : Colors.text} size={23} />
+          tabBarIcon: ({ focused }) => <Feather name="dollar-sign" color={focused ? colors.activeNav : colors.text} size={23} />
           
         }}
       />
@@ -74,7 +74,7 @@ function BottomTabNavigator () {
         component={Empty}
         options={{
           title: 'Bank Accounts',
-          tabBarIcon: ({ focused }) => <Feather name="list" color={focused ? Colors.activeNav : Colors.text} size={23} />
+          tabBarIcon: ({ focused }) => <Feather name="list" color={focused ? colors.activeNav : colors.text} size={23} />
         }}
       />
       <BottomTab.Screen
@@ -82,7 +82,7 @@ function BottomTabNavigator () {
         component={Empty}
         options={{
           title: 'More',
-          tabBarIcon: ({ focused }) => <Feather name="more-horizontal" color={focused ? Colors.activeNav : Colors.text} size={23} />
+          tabBarIcon: ({ focused }) => <Feather name="more-horizontal" color={focused ? colors.activeNav : colors.text} size={23} />
         }}
       />
     </BottomTab.Navigator>
