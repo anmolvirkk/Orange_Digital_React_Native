@@ -39,8 +39,10 @@ const BottomTabNavigator : React.FC = () => {
       screenOptions={{
         tabBarShowLabel: true,
         tabBarLabelStyle: {
-          color: colors.text
+          fontWeight: '500'
         },
+        tabBarActiveTintColor: colors.activeNav,
+        tabBarInactiveTintColor: 'black',
         headerShown: false
       }}
     >
