@@ -1,7 +1,7 @@
 import React from 'react';
 import { ScrollView } from 'react-native';
-import PieChart from './piechart';
-import Categories from './categories';
+import PieChart from '../../components/charts/PieChart';
+import Categories from '../../components/expenses/Categories';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import AllCategories from '../AllCategories';
 import { ExpensesStackParamList } from '../../../types';

@@ -1,16 +1,16 @@
 import React from 'react';
 import { ScrollView } from 'react-native';
-import LineChart from './linechart';
-import Cash from './cash';
+import LineChart from '../../components/charts/LineChart';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { HomeStackParamList } from '../../../types';
 import colors from '../../../constants/colors';
+import CashFlow from '../../components/home/CashFlow';
 
 const HomeScreen: React.FC = () => {
   return (
     <ScrollView>
       <LineChart />
-      <Cash />
+      <CashFlow />
     </ScrollView>
   )
 }

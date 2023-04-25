@@ -1,14 +1,13 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
-import Card from "./card";
+import { View, StyleSheet } from "react-native";
+import Card from "./Card";
 import cashData from "../../../constants/cashData";
+import Heading from "../common/Heading";
 
-const Cash = () => {
+const CashFlow = () => {
   return (
     <View style={styles.container}>
-      <View>
-        <Text style={styles.heading}>Cash</Text>
-      </View>
+      <Heading title="Cash" />
       {cashData.map((card, i) => (
         <Card
           key={i}
@@ -62,4 +61,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default Cash;
+export default CashFlow;

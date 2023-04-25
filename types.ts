@@ -21,7 +21,8 @@ export type ExpensesStackParamList = {
   AllCategories: undefined;
 };
 
-export type CardType = {
+export type ExpensesCardType = {
+  id: number;
   title: string;
   text: string;
   image: ImageSourcePropType;
